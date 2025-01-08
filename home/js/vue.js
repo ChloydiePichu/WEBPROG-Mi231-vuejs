@@ -3,10 +3,15 @@ const displayBox = document.getElementById('display-box');
 const contentElements = {}; 
 const app = Vue.createApp({
   data() {
-  return {
-    message: "Hello World!"
+    return {
+      message: "Hello World!"
+    }
+  },
+  computed: {
+    randomNumber() {
+      return Math.ceil(Math.random() * 6);
+    }
   }
- }
 })
   
   app.mount('#app')
