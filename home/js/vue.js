@@ -1,13 +1,13 @@
 const buttons = document.querySelectorAll('.button-container button');
 const displayBox = document.getElementById('display-box');
 const contentElements = {}; 
-  const app = Vue.createApp({
-   data() {
-    return {
-     message: "Hello World!"
-    }
-   }
-  })
+const app = Vue.createApp({
+  data() {
+  return {
+    message: "Hello World!"
+  }
+ }
+})
   
   app.mount('#app')
 
