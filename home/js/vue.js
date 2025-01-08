@@ -3,18 +3,13 @@ const displayBox = document.getElementById('display-box');
 const contentElements = {}; 
 const app = Vue.createApp({
   data() {
-    return {
-      message: "Hello World!"
-    }
-  },
-  computed: {
-    randomNumber() {
-      return Math.ceil(Math.random() * 6);
-    }
+   return {
+    message: "Hello World!"
+   }
   }
-})
-  
-  app.mount('#app')
+ })
+ 
+ app.mount('#app')
 
 document.querySelectorAll('.hidden-content').forEach(element => {
     contentElements[element.id] = element.innerHTML;
