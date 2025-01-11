@@ -1,3 +1,12 @@
+const app = Vue.createApp({
+  data() {
+    return {
+      vueClass: "pinkBG"
+    };
+  }
+});
+app.mount('#app');
+
 const app2 = Vue.createApp({
   data() {
     return {
@@ -13,7 +22,6 @@ const app2 = Vue.createApp({
     };
   },
 });
-
 app2.mount('#app2');
 
 const app3 = Vue.createApp({
@@ -45,5 +53,4 @@ const app3 = Vue.createApp({
     },
   },
 });
-
 app3.mount('#app3');
