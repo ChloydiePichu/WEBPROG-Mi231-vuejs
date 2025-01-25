@@ -1,7 +1,7 @@
 <script></script>
 
 <template>
-  <h1>Hello World, nice to meet you!</h1>
+  <h1>Hello WEBPROG MI231!</h1>
 </template>
 
 <style></style>
