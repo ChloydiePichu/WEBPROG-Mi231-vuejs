@@ -1,140 +1,115 @@
 <template>
     <div id="container">
-        <div id="about-me">
-            <h2>About Me</h2>
-            <p>Hello, my name is Chloyd! I am 20 years old and I am currently a 2nd-year college student at APC.</p>
-            <div class="button-container">
-                <button data-target="education">Education</button>
-                <button data-target="course">Course</button>
-                <button data-target="it-experience">IT Experience</button>
-                <button data-target="hobbies">Hobbies</button>
-                <button data-target="goals">Goals</button>
-                <button data-target="gallery">Gallery</button>
-            </div>
+      <div id="about-me">
+        <h2>About Me</h2>
+        <p>Hello, my name is Chloyd! I am 20 years old and currently a 2nd-year college student at APC.</p>
+        <div class="button-container">
+          <button data-target="education">Education</button>
+          <button data-target="course">Course</button>
+          <button data-target="it-experience">IT Experience</button>
+          <button data-target="hobbies">Hobbies</button>
+          <button data-target="goals">Goals</button>
+          <button data-target="gallery">Gallery</button>
         </div>
-        <div id="display-box"></div>
-
-        <div id="education" class="hidden-content">
-            <h2>Education & Achievements</h2>
-            <ul>
-                <li>Dean's Lister in Asia Pacific College for A.Y. 2023-2024</li>
-                <li>Consistent top notcher from elementary to JHS</li>
-                <li>Kinder - Grade 10 - Domini Angelicus Integrated School</li>
-                <li>Grade 11 - Current - Asia Pacific College</li>
-            </ul>
+      </div>
+      <div id="display-box"></div>
+  
+      <div id="education" class="hidden-content">
+        <h2>Education & Achievements</h2>
+        <ul>
+          <li>Dean's Lister in Asia Pacific College for A.Y. 2023-2024</li>
+          <li>Consistent top notcher from elementary to JHS</li>
+          <li>Kinder - Grade 10 - Domini Angelicus Integrated School</li>
+          <li>Grade 11 - Current - Asia Pacific College</li>
+        </ul>
+      </div>
+  
+      <div id="course" class="hidden-content">
+        <h2>Course</h2>
+        <p>WEBPROG for 2nd term A.Y. 2024-2025</p>
+      </div>
+  
+      <div id="it-experience" class="hidden-content">
+        <h2>IT Experience</h2>
+        <table>
+          <tr><th>Experience</th><th>Date</th></tr>
+          <tr><td>Developer of iTeach</td><td>2021</td></tr>
+          <tr><td>Developed a grade calculator web app</td><td>2022</td></tr>
+          <tr><td>Developed a facility-booking mobile app</td><td>2024</td></tr>
+          <tr><td>Student specializing in I.T.</td><td>2021 - Current</td></tr>
+        </table>
+      </div>
+  
+      <div id="hobbies" class="hidden-content">
+        <h2>Hobbies & Interests</h2>
+        <ul>
+          <li>Dancing</li>
+          <li>Cooking</li>
+          <li>Playing video games</li>
+          <li>Taking naps</li>
+        </ul>
+      </div>
+  
+      <div id="goals" class="hidden-content">
+        <h2>Goals & Dreams</h2>
+        <p>I want to become a consistent person. Consistent in keeping myself in shape and healthy, consistent in maintaining relationships, consistent in keeping myself motivated, etc. I also aim to create a video game that I always wanted as a kid. That is the reason for my enrollment in APC.</p>
+      </div>
+  
+      <div id="gallery" class="hidden-content">
+        <h2>Picture Gallery</h2>
+        <div class="carousel">
+          <button class="prev-button">❮</button>
+          <img :src="images[currentImageIndex]" alt="Gallery Image" class="carousel-image" />
+          <button class="next-button">❯</button>
         </div>
-
-        <div id="course" class="hidden-content">
-            <h2>Course</h2>
-            <p>WEBPROG for 2nd term A.Y. 2024-2025</p>
-        </div>
-
-        <div id="it-experience" class="hidden-content">
-            <h2>IT Experience</h2>
-            <table>
-                <tr><th>Experience</th><th>Date</th></tr>
-                <tr><td>Developer of iTeach</td><td>2021</td></tr>
-                <tr><td>Developed a grade calculator web app</td><td>2022</td></tr>
-                <tr><td>Developed a facility-booking mobile app</td><td>2024</td></tr>
-                <tr><td>Student specializing in I.T.</td><td>2021 - Current</td></tr>
-            </table>
-        </div>
-
-        <div id="hobbies" class="hidden-content">
-            <h2>Hobbies & Interests</h2>
-            <ul>
-                <li>Dancing</li>
-                <li>Cooking</li>
-                <li>Playing video games</li>
-                <li>Taking naps</li>
-            </ul>
-        </div>
-
-        <div id="goals" class="hidden-content">
-            <h2>Goals & Dreams</h2>
-            <p>I want to become a consistent person. Consistent in keeping myself in shape and healthy, consistent in maintaining relationships, consistent in keeping myself motivated, etc. I also aim to create a video game that I always wanted as a kid. That is the reason for my enrollment in APC.</p>
-        </div>
-
-        <div id="gallery" class="hidden-content">
-            <h2>Picture Gallery</h2>
-            <div class="image-gallery">
-            </div>
-        </div>
+      </div>
     </div>
-</template>
+  </template>
 
 
 <script>
-const buttons = document.querySelectorAll('.button-container button');
-const displayBox = document.getElementById('display-box');
-const contentElements = {};
+export default {
+  data() {
+    return {
+      images: [require("@/assets/gala.jpg"), require("@/assets/pc-pic.jpg")],
+      currentImageIndex: 0,
+    };
+  },
+  mounted() {
+    const buttons = document.querySelectorAll('.button-container button');
+    const displayBox = document.getElementById('display-box');
+    const contentElements = {};
 
-document.querySelectorAll('.hidden-content').forEach(element => {
-    contentElements[element.id] = element.innerHTML;
-    element.remove();
-});
-
-function initializeCarousel() {
-    const images = document.querySelectorAll('.carousel-image');
-    let currentIndex = 0;
-
-    function showImage(index) {
-        images.forEach((image, i) => {
-            image.style.display = (i === index) ? 'block' : 'none';
-        });
-    }
-
-    const nextButton = document.querySelector('.next-button');
-    const prevButton = document.querySelector('.prev-button');
-
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % images.length;
-        showImage(currentIndex);
+    document.querySelectorAll('.hidden-content').forEach((element) => {
+      contentElements[element.id] = element.innerHTML;
+      element.remove();
     });
 
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        showImage(currentIndex);
-    });
-
-    showImage(currentIndex);
-}
-
-buttons.forEach(button => {
-    button.addEventListener('click', () => {
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
         const targetId = button.dataset.target;
-        displayBox.innerHTML = '';  
+        displayBox.innerHTML = '';
 
-        if (targetId === 'survey') {
-            displayBox.innerHTML = contentElements[targetId];
-            const submitButton = displayBox.querySelector('.submit-button');
-
-            submitButton.addEventListener('click', () => {
-                const suggestions = displayBox.querySelector('#suggestions').value;
-                const likes = displayBox.querySelector('#likes').value;
-                const rating = displayBox.querySelector('input[name="rating"]:checked')?.value;
-
-                alert(`Thank you for your feedback!\nSuggestions: ${suggestions}\nLikes: ${likes}\nRating: ${rating}`);
-            });
-        } else if (targetId === 'gallery') {
-            const galleryContent = `
-                <div class="carousel">
-                    <button class="prev-button">❮</button>
-                    <div class="carousel-images">
-                        <img src="gala.jpg" alt="Gallery Image 1" class="carousel-image" />
-                        <img src="pc pic.jpg" alt="Gallery Image 2" class="carousel-image" />
-                    </div>
-                    <button class="next-button">❯</button>
-                </div>
-            `;
-            displayBox.innerHTML = galleryContent;
-            initializeCarousel(); 
+        if (targetId === 'gallery') {
+          displayBox.innerHTML = document.getElementById('gallery').innerHTML;
         } else {
-            displayBox.innerHTML = contentElements[targetId];
+          displayBox.innerHTML = contentElements[targetId];
         }
+      });
     });
-});
+  },
+  methods: {
+    nextImage() {
+      this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
+    },
+    prevImage() {
+      this.currentImageIndex =
+        (this.currentImageIndex - 1 + this.images.length) % this.images.length;
+    },
+  },
+};
 </script>
+
 
 <style>
 body {
