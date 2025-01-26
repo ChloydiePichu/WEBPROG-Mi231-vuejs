@@ -58,12 +58,11 @@
         <div id="gallery" class="hidden-content">
             <h2>Picture Gallery</h2>
             <div class="image-gallery">
-                <img src="gala.jpg" alt="Image 1">
-                <img src="pc pic.jpg" alt="Image 2">
             </div>
         </div>
     </div>
 </template>
+
 
 <script>
 const buttons = document.querySelectorAll('.button-container button');
