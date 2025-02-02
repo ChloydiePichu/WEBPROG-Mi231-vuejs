@@ -1,11 +1,32 @@
 <template>
   <h1>Lechico - Food</h1>
+  <ul>
+      <li v-for="country in countries" :key="country.id">{{ country.name }}</li>
+  </ul>
+  
+  <br>
   <food-item/>
-  <food-item2/>
+  <food-item2/> 
   <food-item/>
-  <personal-profile/>
+  <personal-profile/> <br>
 </template>
 
-<script></script>
+<script setup>
+  import { ref, onMounted } from 'vue'
+  import { supabase } from './lib/supabaseClient'
 
-<style></style>    
+  const countries = ref([])
+
+  async function getCountries() {
+    const { data } = await supabase.from('countries').select()
+    countries.value = data
+  }
+
+  onMounted(() => {
+    getCountries()
+  })
+  </script>
+
+<style>
+
+</style>    
