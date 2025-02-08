@@ -8,7 +8,8 @@
   <personal-profile/>
   <country/>
   <comment-form/>
-  <comment/> <br>
+  <comment/> 
+  <br>
 </template>
 
 <script>
