@@ -20,15 +20,15 @@
   
   <script setup>
   import { ref } from 'vue';
-  import { createClient } from '@supabase/supabase-js';
+  import { supabase } from '../lib/supabaseClient';
   
   const name = ref('');
   const comment = ref('');
   const submissionStatus = ref(null);
   
   // Your Supabase URL and Key - IMPORTANT!
-  const supabaseUrl = 'YOUR_SUPABASE_URL';
-  const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+  const supabaseUrl = 'https://asbkzrawjnszfkhokhhk.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzYmt6cmF3am5zemZraG9raGhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg0OTQwMjMsImV4cCI6MjA1NDA3MDAyM30.0HEzkHO3Ew-nKVNQw7y5We7_tWay4eSfGUHzaDdM4XA';
   const tableName = 'comments'; // Name of your Supabase table
   
   const supabase = createClient(supabaseUrl, supabaseKey);
