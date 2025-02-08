@@ -27,6 +27,6 @@
         display: inline-block;
         margin: 10px;
         padding: 10px;
-        background-color: lightseagreen;
+        background-color: lightblue;
     }
 </style>
