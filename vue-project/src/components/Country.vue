@@ -27,6 +27,6 @@
         display: inline-block;
         margin: 10px;
         padding: 10px;
-        background-color: rgba(70, 120, 170, 0.8);
+        background-color: rgba(50, 100, 150, 0.6);
     }
 </style>
